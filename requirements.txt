@@ -1,0 +1,21 @@
+# No hard version pins — pinned versions can lack prebuilt wheels for
+# newer Python releases (e.g. 3.13 on Windows), forcing pip to compile
+# from source, which needs MSVC Build Tools / Rust that most machines
+# don't have. Unpinned installs grab the latest release with a ready
+# prebuilt wheel, avoiding that entirely.
+fastapi
+uvicorn[standard]
+psycopg2-binary
+sqlalchemy
+geoalchemy2
+python-dotenv
+pydantic
+pydantic-settings
+httpx
+apscheduler
+websockets
+scikit-learn
+xgboost
+pandas
+numpy
+wsproto

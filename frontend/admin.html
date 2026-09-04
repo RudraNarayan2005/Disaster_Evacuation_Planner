@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admin — Odisha Evacuation Planner</title>
+<style>
+  :root{
+    --bg: #0f141b;
+    --panel: #161d27;
+    --panel-raised: #1c2531;
+    --line: #29323f;
+    --text: #e8edf3;
+    --muted: #8b96a5;
+    --accent: #ff6a45;
+    --safe: #33b17a;
+    --moderate: #d9a441;
+    --high: #e07a3b;
+    --severe: #e0473f;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:var(--font); background:var(--bg); color:var(--text); font-size:14px; min-height:100vh; }
+
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; border-bottom:1px solid var(--line);
+  }
+  header .title{ font-size:16px; font-weight:700; }
+  header .title a{ color:var(--muted); font-weight:400; font-size:12px; text-decoration:none; margin-left:12px; }
+  header .title a:hover{ color:var(--text); }
+
+  main{ max-width:1100px; margin:0 auto; padding:28px; }
+
+  /* ---- login ---- */
+  #login-view{ max-width:340px; margin:80px auto; }
+  #login-view h1{ font-size:18px; margin-bottom:6px; }
+  #login-view p{ color:var(--muted); font-size:12.5px; margin-bottom:20px; }
+  label{ display:block; font-size:12px; color:var(--muted); margin:12px 0 4px; }
+  input[type=text], input[type=password], input[type=number]{
+    width:100%; background:var(--panel-raised); border:1px solid var(--line);
+    color:var(--text); border-radius:6px; padding:9px 10px; font-size:13px; font-family:inherit;
+  }
+  input:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+  .btn{
+    background:var(--accent); color:#1a0d08; border:none; padding:9px 16px;
+    border-radius:6px; cursor:pointer; font-size:13px; font-weight:600; font-family:inherit;
+  }
+  .btn:hover{ background:#ff7d5c; }
+  .btn-ghost{ background:var(--panel-raised); color:var(--text); border:1px solid var(--line); }
+  .btn-ghost:hover{ border-color:#3a4656; }
+  .btn-small{ padding:5px 10px; font-size:12px; }
+  #login-error{ color:var(--severe); font-size:12.5px; margin-top:10px; min-height:16px; }
+  #login-view button{ margin-top:16px; width:100%; }
+
+  /* ---- dashboard ---- */
+  #dashboard-view{ display:none; }
+  .stat-row{ display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:14px; margin-bottom:28px; }
+  .stat-card{ background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:16px; }
+  .stat-card .num{ font-size:26px; font-weight:700; }
+  .stat-card .label{ font-size:12px; color:var(--muted); margin-top:4px; }
+
+  section.block{ margin-bottom:32px; }
+  .block-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .block-head h2{ font-size:14px; font-weight:700; }
+  .block-head .sub{ font-size:11.5px; color:var(--muted); }
+
+  table{ width:100%; border-collapse:collapse; background:var(--panel); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  thead th{ text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.03em; color:var(--muted); padding:10px 12px; border-bottom:1px solid var(--line); background:var(--panel-raised); }
+  tbody td{ padding:9px 12px; border-bottom:1px solid var(--line); font-size:12.5px; }
+  tbody tr:last-child td{ border-bottom:none; }
+  tbody tr:hover{ background:rgba(255,255,255,0.02); }
+  .muted{ color:var(--muted); }
+  .badge{ display:inline-block; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:20px; text-transform:uppercase; }
+  .badge-open{ background:rgba(51,177,122,0.18); color:var(--safe); }
+  .badge-closed{ background:rgba(224,71,63,0.18); color:var(--severe); }
+  .risk-Low{ color:var(--safe); }
+  .risk-Moderate{ color:var(--moderate); }
+  .risk-High{ color:var(--high); }
+  .risk-Severe{ color:var(--severe); }
+  .cap-input{ width:70px; padding:4px 6px; font-size:12px; }
+  .empty-row td{ text-align:center; color:var(--muted); padding:20px; }
+  #admin-log{ font-size:11.5px; color:var(--muted); margin-top:8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title">Admin — Odisha Evacuation Planner <a href="/">← Back to map</a></div>
+  <button class="btn btn-ghost btn-small" id="btn-logout" style="display:none;">Log out</button>
+</header>
+
+<main>
+  <div id="login-view">
+    <h1>Admin sign in</h1>
+    <p>Manage shelters, resolve incidents, and refresh live risk.</p>
+    <label for="login-username">Username</label>
+    <input type="text" id="login-username" autocomplete="username" />
+    <label for="login-password">Password</label>
+    <input type="password" id="login-password" autocomplete="current-password" />
+    <button class="btn" id="btn-login">Sign in</button>
+    <div id="login-error"></div>
+  </div>
+
+  <div id="dashboard-view">
+    <div class="stat-row" id="stat-row"></div>
+
+    <section class="block">
+      <div class="block-head">
+        <h2>District risk</h2>
+        <button class="btn btn-ghost btn-small" id="btn-refresh-risk">Refresh now</button>
+      </div>
+      <table>
+        <thead><tr><th>District</th><th>Flood</th><th>Cyclone</th><th>Overall</th><th>Driving hazard</th></tr></thead>
+        <tbody id="risk-table-body"><tr class="empty-row"><td colspan="5">Loading…</td></tr></tbody>
+      </table>
+      <div id="admin-log"></div>
+    </section>
+
+    <section class="block">
+      <div class="block-head">
+        <h2>Open incidents</h2>
+        <span class="sub" id="incidents-count"></span>
+      </div>
+      <table>
+        <thead><tr><th>Type</th><th>Description</th><th>Reported</th><th></th></tr></thead>
+        <tbody id="incidents-table-body"><tr class="empty-row"><td colspan="4">Loading…</td></tr></tbody>
+      </table>
+    </section>
+
+    <section class="block">
+      <div class="block-head">
+        <h2>Shelters</h2>
+        <span class="sub" id="shelters-count"></span>
+      </div>
+      <table>
+        <thead><tr><th>Name</th><th>District / Block</th><th>Type</th><th>Capacity</th><th>Status</th><th></th></tr></thead>
+        <tbody id="shelters-table-body"><tr class="empty-row"><td colspan="6">Loading…</td></tr></tbody>
+      </table>
+    </section>
+  </div>
+</main>
+
+<script src="/static/admin.js"></script>
+</body>
+</html>

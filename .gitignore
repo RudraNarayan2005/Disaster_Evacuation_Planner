@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pyc
+.env
+*.pkl
+data/synthetic_flood_data.csv
+data/synthetic_cyclone_data.csv

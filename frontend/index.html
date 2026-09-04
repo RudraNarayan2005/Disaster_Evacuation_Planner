@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Odisha Disaster Evacuation Planner</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    :root{
+      --bg: #0f141b;
+      --panel: #161d27;
+      --panel-raised: #1c2531;
+      --line: #29323f;
+      --text: #e8edf3;
+      --muted: #8b96a5;
+      --accent: #ff6a45;
+      --safe: #33b17a;
+      --moderate: #d9a441;
+      --high: #e07a3b;
+      --severe: #e0473f;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font); }
+    body { background: var(--bg); color: var(--text); font-size: 13.5px; }
+    #app { display: flex; height: 100vh; }
+    #sidebar {
+      width: 360px; background: var(--panel); border-right: 1px solid var(--line);
+      overflow-y: auto; flex-shrink: 0; padding: 18px;
+    }
+    #map { flex-grow: 1; background: #0b0f14; }
+
+    h1 { font-size: 16px; margin-bottom: 2px; }
+    h1 a { float: right; font-size: 11px; color: var(--muted); text-decoration: none; font-weight: 400; }
+    h1 a:hover { color: var(--text); }
+    h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 20px 0 8px; }
+    h2:first-of-type { margin-top: 14px; }
+
+    #ws-status { font-size: 11.5px; margin-bottom: 4px; }
+    .status-connected { color: var(--safe); }
+    .status-disconnected { color: var(--severe); }
+
+    section.card {
+      background: var(--panel-raised); border: 1px solid var(--line); border-radius: 8px;
+      padding: 12px; margin-bottom: 10px;
+    }
+
+    label { display: block; font-size: 11.5px; color: var(--muted); margin: 8px 0 4px; }
+    label:first-child { margin-top: 0; }
+    select, textarea, input[type=text] {
+      width: 100%; background: #10151d; border: 1px solid var(--line); color: var(--text);
+      border-radius: 6px; padding: 8px 9px; font-size: 12.5px; font-family: inherit;
+    }
+    textarea { resize: vertical; min-height: 50px; }
+    select:focus, textarea:focus, input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+    button {
+      background: var(--accent); color: #1a0d08; border: none; padding: 9px 10px;
+      width: 100%; border-radius: 6px; cursor: pointer; margin-top: 10px;
+      font-size: 12.5px; font-weight: 600; font-family: inherit;
+    }
+    button:hover { background: #ff7d5c; }
+    button:disabled { opacity: .5; cursor: default; }
+    button.ghost { background: var(--panel); color: var(--text); border: 1px solid var(--line); }
+    button.ghost:hover { border-color: #3a4656; background: var(--panel); }
+    button.small { padding: 6px 8px; font-size: 11.5px; margin-top: 6px; }
+    button.danger { background: var(--severe); color: #fff; }
+
+    #location-readout { font-size: 11.5px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+    #location-readout b { color: var(--text); }
+
+    .result { font-size: 12.5px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+    .result .level { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .level-Low { color: var(--safe); }
+    .level-Moderate { color: var(--moderate); }
+    .level-High { color: var(--high); }
+    .level-Severe { color: var(--severe); }
+    .result .msg { color: var(--muted); margin-bottom: 8px; line-height: 1.4; }
+
+    .shelter-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 7px 0; border-top: 1px solid var(--line); font-size: 12px;
+    }
+    .shelter-row:first-of-type { border-top: none; }
+    .shelter-row .info b { display: block; font-size: 12.5px; }
+    .shelter-row .info span { color: var(--muted); font-size: 11px; }
+    .shelter-row button { width: auto; margin: 0; padding: 5px 9px; font-size: 11px; }
+
+    #route-summary { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+    #route-summary b { color: var(--text); }
+
+    .log-entry {
+      background: var(--panel); border: 1px solid var(--line); padding: 8px 9px; border-radius: 6px;
+      margin-top: 7px; font-size: 11.5px; line-height: 1.4;
+    }
+    .log-entry .t { color: var(--muted); font-size: 10px; display: block; margin-top: 2px; }
+
+    .toggle-row { display: flex; align-items: center; gap: 8px; font-size: 12px; margin-top: 8px; }
+    .toggle-row input { width: auto; }
+
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--panel-raised); color: var(--text); }
+    .leaflet-popup-content { font-size: 12.5px; margin: 10px 12px; }
+    .leaflet-popup-content b { color: var(--text); }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div id="sidebar">
+      <h1>🌊 Odisha Evacuation Planner <a href="/admin">Admin →</a></h1>
+      <p id="ws-status" class="status-disconnected">● Connecting...</p>
+
+      <h2>Evacuation Alerts</h2>
+      <section class="card">
+        <button id="btn-enable-notifications" class="ghost">🔔 Enable evacuation alerts</button>
+        <div id="notification-status" style="font-size:11.5px; color:var(--muted); margin-top:6px;"></div>
+      </section>
+
+      <h2>My location</h2>
+      <section class="card">
+        <button id="btn-use-browser-location" class="ghost">📍 Use my browser location</button>
+        <div id="location-readout">Click anywhere on the map to set your location, or use the button above.</div>
+      </section>
+
+      <h2>Check risk &amp; find shelter</h2>
+      <section class="card">
+        <label for="district-select">District</label>
+        <select id="district-select">
+          <option>Loading…</option>
+        </select>
+        <button id="btn-check-risk">Check my risk (flood + cyclone)</button>
+        <div id="risk-result" class="result" style="display:none;"></div>
+      </section>
+
+      <div id="route-card" class="card" style="display:none;">
+        <h2 style="margin-top:0;">Route</h2>
+        <div id="route-summary"></div>
+        <button id="btn-clear-route" class="ghost small">Clear route</button>
+      </div>
+
+      <h2>Report / SOS</h2>
+      <section class="card">
+        <label for="incident-type">Type</label>
+        <select id="incident-type">
+          <option value="road_blocked">Road blocked</option>
+          <option value="flooding">Flooding</option>
+          <option value="fallen_tree">Fallen tree</option>
+          <option value="other">Other hazard</option>
+        </select>
+        <label for="incident-desc">Description</label>
+        <textarea id="incident-desc" placeholder="Brief details (optional)"></textarea>
+        <button id="btn-report-incident" class="ghost">Report at my location</button>
+        <button id="btn-sos" class="danger">🆘 Send SOS at my location</button>
+      </section>
+
+      <h2>Map layers</h2>
+      <section class="card">
+        <div class="toggle-row"><input type="checkbox" id="toggle-roads" checked /> <label style="margin:0;" for="toggle-roads">Show road network (colored by live risk)</label></div>
+        <div class="toggle-row"><input type="checkbox" id="toggle-shelters" checked /> <label style="margin:0;" for="toggle-shelters">Show shelters</label></div>
+        <button id="btn-refresh-roads" class="ghost small">↻ Refresh road risk colors</button>
+      </section>
+
+      <h2>Live updates</h2>
+      <div id="log"></div>
+    </div>
+    <div id="map"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

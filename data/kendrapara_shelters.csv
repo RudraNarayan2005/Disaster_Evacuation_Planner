@@ -1,0 +1,118 @@
+sl_no,block,gp,village,location_desc,type,scheme
+1,Aul,Kolidiha,Ekmania,Infront of Primary School,MFS,State Plan (post Phailin)
+2,Aul,Padanipal,Padanipal,Near Daitary UGUP School,MFS,State Plan (post Phailin)
+3,Garadpur,Bedari,Bedari,Bedari U.P.School,MFS,CMRF
+4,Garadpur,Bhagabanpur,Dhanamandal,Community land,MFS,State Plan (post Phailin)
+5,Garadpur,Garadpur,Naindipur,High School,MFS,State Plan (post Phailin)
+6,Garadpur,Korua,Korua,L.N.College Korua,MFS,CMRF
+7,Mahakalpada,Badadiha,Bagagahan (Bankim Prasad),Inside High School campus,MCS,NCRMP
+8,Mahakalpada,Badhi,Kansar Badadandua,Near U.G.U.P School,MFS,State Plan (post Phailin)
+9,Mahakalpada,Badhi,Tarapada,Near Kansartarapada Kunjabihari UP School,MCS,CMRF
+10,Mahakalpada,Badhi,Radia,Inside School Campus,MCS,NCRMP
+11,Mahakalpada,Baradanga,Baharsubala,Jagulai Nodal UP School,MCS,PMNRF
+12,Mahakalpada,Barakanda,Palligarh,Palligarh ME School,MCS,PMNRF
+13,Mahakalpada,Barakanda,Adoi,Netaji UP School side,MCS,PMNRF
+14,Mahakalpada,Barakanda,Akhadasali,Akhadasali Project Primary School,MCS,PMNRF
+15,Mahakalpada,Barakanda,Tentulikhanda,infront of Upper Primary School,MCS,NCRMP
+16,Mahakalpada,Barakanda,Petachhela,Middle of village near VARAT EGS Center,MCS,ICZMP
+17,Mahakalpada,Barakanda,Sarumuhin,,MCS,IRCS
+18,Mahakalpada,Barakolikhala,Barakolikhala,,MCS,IRCS
+19,Mahakalpada,Batighara,Kajalpatia,Middle of village near market,MCS,NCRMP
+20,Mahakalpada,Batighara,Badatubi,Near to Ferry Ghat,MCS,ICZMP
+21,Mahakalpada,Baulakani,Prabhakarpur,Premchand High School,MCS,WORLD BANK
+22,Mahakalpada,Baulakani,Jamboo,Near JT,MCS,NCRMP
+23,Mahakalpada,Baulakani (Baradanga),Kansapal,Project UG UP School,MCS,NCRMP(AF)
+24,Mahakalpada,Bijayanagar,Kanpur,Inside UP School,MCS,NCRMP
+25,Mahakalpada,Gogua,Kalatunga,Near Balya Vikash UP School,MCS,PMNRF
+26,Mahakalpada,Gogua,Gogua,UP School,MCS,WORLD BANK
+27,Mahakalpada,Gogua,Sanarahama,Thakura Nigamananda High School Side,MCS,CMRF
+28,Mahakalpada,Gogua,Ratapank,Near Project UP School,MCS,PMNRF
+29,Mahakalpada,Gogua,Baliganda,Inside School Campus,MCS,NCRMP
+30,Mahakalpada,Gogua,Tantiapal (Sasan),Near Primary School,MCS,NCRMP
+31,Mahakalpada,Jadupur,Jadupur,,MCS,IRCS
+32,Mahakalpada,Jamboo,Jamboo,Near Jamboo Jethi,MCS,IRCS
+33,Mahakalpada,Jayachandrapur,Badagoan (Kaida Chhaka),Near Badagaon High School,MCS,CMRF (post Phailin)
+34,Mahakalpada,Keyarbank,Janara,nearer to Bacheswari UP School,MCS,NCRMP(AF)
+35,Mahakalpada,Kharinasi,Kharinasi,,MCS,IRCS
+36,Mahakalpada,Khursia,Khursiapat,High School,MCS,WORLD BANK
+37,Mahakalpada,Mangalpur,Bandhapada,,MCS,IRCS
+38,Mahakalpada,Mangalpur,Kumbharpada,,MCS,IRCS
+39,Mahakalpada,Mangalpur (Gokhakhati),Gokhakhati,Near Tarini Temple Mandap,MCS,NCRMP
+40,Mahakalpada,Patalipanka,Koratapanga,Infront of Primary School,MFS,CMRF
+41,Mahakalpada,Ramnagar,Ramanagar,UP School Ramanagar,MCS,WORLD BANK
+42,Mahakalpada,Ramnagar,Brajabakuda,UP School Brajabakuda,MCS,WORLD BANK
+43,Mahakalpada,Ramnagar,Pitapatia,Adjacent to Primary School,MCS,NCRMP
+44,Mahakalpada,Suniti,Jagarjore,Near Janakalyan Hat,MCS,CMRF
+45,Mahakalpada,Suniti,Benakandha,,MCS,IRCS
+46,Mahakalpada,Teragaon,Teragan (Patana),Near Hanuman Chhak,MFS,State Plan (post Phailin)
+47,Mahakalpada,Teragaon,Subala,,MCS,IRCS
+48,Mahakalpada,Tikarpanga,Chhanda,Chhanda ME School,MCS,PMNRF
+49,Mahakalpada,Tikarpanga,Tikarpanga,Near ANM center,MFS,State Plan
+50,Mahakalpada,Tikhiri,Tikhiri,Inside High & Primary School,MFS,CMRF
+51,Marshaghai,Aitipur,Aitipur,Near Gandhiji High School,MFS,State Plan (post Phailin)
+52,Marshaghai,Aitipur,Dihabalarampur,Near Jay Chandi U.P School,MFS,State Plan (post Phailin)
+53,Marshaghai,Antei,Balighai,Balighai U.P.School,MFS,CMRF
+54,Marshaghai,Beruhan,Beruhan,Near U.P School,MFS,State Plan (post Phailin)
+55,Marshaghai,Jalapoka,Jalapoka,Near Jalapoka Panchayat High School,MFS,CMRF
+56,Marshaghai,Mangarajpur,Ratanpur,Near Hanuman Temple (Community Place),MFS,State Plan (post Phailin)
+57,Marshaghai,Parakula,Parakula,Parakula U.P.School,MFS,CMRF
+58,Marshaghai,Raghabpur,Podana,Near to High School,MFS,State Plan
+59,Pattamundai,Balabhadrapur,Balipatana,Middle Of The Village,MFS,State Plan (post Phailin)
+60,Pattamundai,Bilikana,Badheipada,Beginning of the village,MCS,NCRMP(AF)
+61,Pattamundai,Bilikana,Balikana,Inside School Campus,MCS,NCRMP
+62,Pattamundai,Bilikana,Satkudia,Community land,MCS,NCRMP
+63,Pattamundai,Khanata,Sankhapur,Primary School,MCS,CMRF
+64,Pattamundai,Oupada,Koriapala,Kapileswar M.E School,MCS,CMRF
+65,Pattamundai,Oupada,Kajala Bandha,Inside School Campus,MCS,NCRMP
+66,Pattamundai,Penthatala,Dandisahi,In the middle of the village,MFS,State Plan
+67,Pattamundai,Singhagaon,Singhagaon,Community land,MFS,State Plan (post Phailin)
+68,Pattamundai,Srirampur,Palapatna,Inside Of Ramachandi High School,MFS,State Plan (post Phailin)
+69,Rajkanika,Barada-Domanda,Manpur (Kanakpur/Gunthal),Adjacent to Manpur Durga Mandap,MFS,CMRF (post Phailin)
+70,Rajkanika,Jayanagar,Bajarpur,Community land,MFS,State Plan (post Phailin)
+71,Rajkanika,Katanabania,Katanabania,Near Katanabania Market,MFS,State Plan (post Phailin)
+72,Rajkanika,Pradhanpada,Sanahalupada,Near Primary School,MFS,State Plan
+73,Rajnagar,Bada Naukana,Brahmanasahi,,MCS,IRCS
+74,Rajnagar,Brahmana Sahi,Prasannapur,Starting of the village,MCS,CMRF (post Phailin)
+75,Rajnagar,Brahmansahi,Pentha,Sechenvihar Primary School,MCS,ICZMP
+76,Rajnagar,Dangamala,Subarnapur,Near Subarnapur Primary School,MCS,CMRF
+77,Rajnagar,Dangamala,Dangamala,Adjacent to Dangamal anganwadi center,MCS,NCRMP(AF)
+78,Rajnagar,Dangamala,Krushnanagar,,MCS,IRCS
+79,Rajnagar,Dangamala,Kanaknagar,,MCS,IRCS
+80,Rajnagar,Dera,Paripangara,,MCS,IRCS
+81,Rajnagar,Gupti,Rajarajeswarpur,Near UGME School,MCS,CMRF
+82,Rajnagar,Gupti,Okilapal,,MCS,IRCS
+83,Rajnagar,Gupti,Bagapatia,Near G.P. office Satavaya,MCS,CMRF (post Phailin)
+84,Rajnagar,Iswarpur,Silapokhari,N.Silapokhari Primary School,MCS,CMRF
+85,Rajnagar,Iswarpur,Balabhadrapur,,MCS,IRCS
+86,Rajnagar,Iswarpur,Junusnagar,,MCS,IRCS
+87,Rajnagar,Kandira,Bhitargarh,Bhitargarh UP School,MCS,PMNRF
+88,Rajnagar,Kandira,Nuagaon,Sanskrit High School,MCS,CMRF
+89,Rajnagar,Kandira,Laxminarayanpur,Near UP School end of village,MCS,NCRMP(AF)
+90,Rajnagar,Kandira,Padmanavpur,Infront of Panavpur UP School,MCS,NCRMP(AF)
+91,Rajnagar,Koilipur,Badkot,Badkot UP School,MCS,PMNRF
+92,Rajnagar,Koilipur,Koilipur,Middle of the village,MCS,NCRMP(AF)
+93,Rajnagar,Koilipur,Kankadia,,MCS,IRCS
+94,Rajnagar,Kurunti,Balarampur,Balarampur UP School,MCS,PMNRF
+95,Rajnagar,Kurunti,Kaitha,,MCS,IRCS
+96,Rajnagar,Mahinsasura,Rajnagar College Rajnagar,Inside Sri Sri Jagannath College Rajnagar,MCS,CMRF (post Phailin)
+97,Rajnagar,Mahulia,Rajgarh,Rajgarh UP School,MCS,PMNRF
+98,Rajnagar,Mahulia,Pokharia,Community land near village,MCS,NCRMP
+99,Rajnagar,Rajnagar,Rajnagar,Sailachandra Narayan M.E School,MCS,CMRF
+100,Rajnagar,Rangani,Vekta,Near Vekta Primary School,MCS,CMRF
+101,Rajnagar,Rangani,Pattaparia,Pattaparia Primary School,MCS,CMRF
+102,Rajnagar,Rangani,Chanrakola,,MCS,IRCS
+103,Rajnagar,Talachua,Manjuapalli,Near Primary School,MCS,ICZMP
+104,Rajnagar,Brahmansahi,Bada Naukana,Near UGME School,MCS,WORLD BANK
+105,Rajnagar,Chandi Baunsamula,Lokanathprasad,Lokanathprasad UP School,MCS,PMNRF
+106,Rajnagar,Dangamala,Khamarsahi (Dangamala),Dangamala UP School At Khamarsahi,MCS,WORLD BANK
+107,Rajnagar,Dangamala,Rajendranarayanpur,Rajendranarayanpur Primary School,MCS,PMNRF
+108,Rajnagar,Dera,Nuagaon,Near UP School,MCS,WORLD BANK
+109,Rajnagar,Kandira,Balarampur,Near Balarampur Primary School,MCS,PMNRF
+110,Rajnagar,Kurunti,Kurunti,Near Primary School,MCS,WORLD BANK
+111,Rajnagar,Rajnagar,Mangarajpur,Near Mangarajpur Primary School,MCS,PMNRF
+112,Rajnagar,Rajnagar,Mahinsasur,Mahinsasur Primary School,MCS,PMNRF
+113,Rajnagar,Rangani,Surendrapur,Surendrapur EGS Centre,MCS,PMNRF
+114,Rajnagar,Rangani,Keruapal,Keruapal UP School,MCS,PMNRF
+115,Rajnagar,Rangani,Daleisahi,Primary School,MCS,WORLD BANK
+116,Rajnagar,Talachua,Khasmunda,Khasmunda UP School,MCS,PMNRF
+117,Rajnagar,Talachua,Talachua,Adjacent to Primary School,MCS,WORLD BANK
